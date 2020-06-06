@@ -7,3 +7,4 @@
 
 
 git pull origin master --allow-unrelated-histories
+mvn -Dmybatis.generator.overwrite=true mybatis-generator:generate

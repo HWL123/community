@@ -1,0 +1,1 @@
+ALTER TABLE question ADD view_count INT DEFAULT 0 NULL;

@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th : th:text="${question.title}"></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!--
+    <link ref = "stylesheet" href = "../static/css/bootstrap.min.css"/>
+
+    <script src="../static/js/bootstrap.min.js" type = "application/javascript"></script>
+    <script src="../static/js/bootstrap.bundle.min.js"></script>
+-->
+    <script src="/js/jquery-3.5.1.min.js"></script>
+    <!--
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"  ></script>
+    -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<div th : th:insert="~{navigatebar :: nav}"></div>
+
+
+<div class="container-fluid" style="margin: 40px" >
+    <div class = "row">
+        <div class= "col-lg-8 col-md-12 col-sm-12 col-12 " >
+            <h2> <span th:text="${question.title}"></span></h2>
+            <span style="font-size: 14px; font-weight:normal; color: #95999c">
+                author: <span th:text="${question.user.name}"></span>
+                comments: <span th:text="${question.view_count}"></span>
+                 date:<span th:text="${#dates.format(question.gmt_create,'dd mmmm yyyy')}"></span>
+            </span>
+            <div class= "col-lg-12 col-md-12 col-sm-12 col-12" th:text="${question.description}"></div>
+
+            <hr class= "col-lg-12 col-md-12 col-sm-12 col-12">
+            <h4><a th:href="@{'/publish/' + ${question.id}}" class="badge badge-light" th:if = "${session.user != null && session.user.id == question.creator}">Edit</a></h4>
+            <hr class= "col-lg-12 col-md-12 col-sm-12 col-12">
+
+
+
+
+
+
+        </div>
+
+        <div class= "col-lg-4 col-md-12 col-sm-12 col-12" >
+            <div class= "col-lg-11 col-md-12 col-sm-12 col-12" ><h5>Author</h5></div>
+            <div class="media col-lg-11 col-md-12 col-sm-12 col-12">
+                <img th:src="${question.user.avatar_url}" class="mr-3 img-circle" alt="..." style="width: 40px;height : 45px"  >
+                <div class="media-body">
+                    <h6 class="mt-0" th:text="${question.user.name}"></h6>
+                </div>
+
+            </div>
+
+
+
+            <div class= "col-lg-12 col-md-12 col-sm-12 col-12" ><h4>Related questions</h4></div>
+
+
+
+
+
+        </div>
+
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

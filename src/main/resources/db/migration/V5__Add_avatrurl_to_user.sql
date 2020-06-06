@@ -1,0 +1,1 @@
+ALTER TABLE user ADD avatr_url VARCHAR(100) NULL;
